@@ -279,3 +279,58 @@ img {
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
 }
+
+.confirm {
+  height: 45%;
+  width: 50%;
+  top: 25%;
+  left: 25%;
+  background-color: #0E0B16;
+  position: fixed;
+  z-index: 100 !important;
+  visibility: hidden;
+  border: 3px solid white;
+  margin-top: 5%;
+  padding-top: 5%;
+  padding: 1%;
+  text-align: center;
+  font-size: 2em;
+}
+
+.confButton {
+  width: 30%;
+  height: 17%;
+  background-color: white;
+  display: inline-block;
+  margin: 5%;
+  margin-top: 100px;
+  background-color: #230F6E;
+  border: 3px solid white;
+  cursor: pointer;
+}
+
+.confButton:hover {
+  background-color: #13083C;
+}
+
+#yes {
+  background-image: url("images/yes.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+#no {
+  background-image: url("images/no.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+#x {
+  right: 5%;
+  top: 5%;
+  position: absolute;
+  color: white;
+  cursor: pointer;
+}

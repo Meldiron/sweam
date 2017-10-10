@@ -10,7 +10,13 @@
 </head>
 
 <body>
-  <div class="newAcc"><span id="newAcc"> Display name :
+  <div class="confirm">
+    <br>Do you really want to remove this account?
+    <br>
+    <div class="confButton" id="yes"></div>
+    <div class="confButton" id="no"></div>
+  </div>
+  <div class="newAcc"><span id="x"> x </span><span id="newAcc"> Display name :
     <br>
     <br> &nbsp;&nbsp;&nbsp;
     <input placeholder="name" class="addInput" id="dName">
@@ -173,31 +179,42 @@ function docReady() {
     }
     //remove account from database
     function removeAcc() {
-      delete obj.imgPath[i];
-      delete obj.usrName[i];
-      delete obj.name[i];
-      delete obj.pass[i];
-      delete obj.date[i];
-      obj = JSON.stringify(obj);
-      obj = obj.replace(/,null/g, " ");
-      obj = JSON.parse(obj);
-      socket.emit("return", obj);
-      console.log("TODO: add a confirm box");
+      $(".main").css({ "filter": "blur(10px)", "pointerEvents": "none" });
+      $(".confirm").css({ "pointerEvents": "auto", "visibility": "visible" });
+      $("#yes").click(function() {
+        console.log("yes")
+        delete obj.imgPath[i];
+        delete obj.usrName[i];
+        delete obj.name[i];
+        delete obj.pass[i];
+        delete obj.date[i];
+        obj = JSON.stringify(obj);
+        obj = obj.replace(/,null/g, " ");
+        obj = obj.replace(/null,/g, " ");
+        obj = JSON.parse(obj);
+        socket.emit("return", obj);
+        console.log("TODO: add a confirm box");
+      })
+      $("#no").click(function() {
+        $(".main").css({ "filter": "blur(0px)", "pointerEvents": "auto" });
+        $(".confirm").css({ "visibility": "hidden" });
+      })
     }
+
+    usrName = "";
+    name = "";
+    pass = "";
 
     function addAcc() {
       $(".button").click(function() {
-        console.log(imgPath);
         if(imgPath == "") {
           imgPath = "images/default.jpg";
         }
-        var usrName = $("#dName").val();
-        var name = $("#sName").val();
-        var pass = $("#sPass").val();
+        usrName = $("#dName").val();
+        name = $("#sName").val();
+        pass = $("#sPass").val();
         if(usrName == "" || name == "" || pass == "") {
-          $("#warning").css({
-            visibility: "visible"
-          })
+          $("#warning").css({ visibility: "visible" })
         } else {
           obj.imgPath.push(imgPath);
           obj.usrName.push(usrName);
@@ -282,6 +299,11 @@ function docReady() {
       $(".newAcc").css({ "pointerEvents": "auto", "visibility": "visible" });
       addAcc();
     });
+    $("#x").click(function() {
+      socket.emit("return", obj)
+      console.log(obj)
+
+    })
   })
 }
 </script>
