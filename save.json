@@ -1,23 +1,8 @@
 {
  "path": "C:/Program Files (x86)/Steam",
- "imgPath": [
-  "C:/Stuff/Skola/Code/sweam/web/images/4k.jpg",
-  "images/default.jpg"
- ],
- "usrName": [
-  "fuck",
-  "newAcc"
- ],
- "name": [
-  "shit",
-  "asd"
- ],
- "pass": [
-  "asd",
-  "asdasdasd"
- ],
- "date": [
-  "10/10/2017",
-  "10/10/2017"
- ]
+ "imgPath": [],
+ "usrName": [],
+ "name": [],
+ "pass": [],
+ "date": []
 }

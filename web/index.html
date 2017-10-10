@@ -49,8 +49,8 @@
       <div class="login">
         <img src="images/login.jpg" id="noround">
       </div>
-      <div class="date"><span> Last Online: </span></div>
-      <div class="delete"> remove account </div>
+      <div class="date"><span id="lastOnline"> Last Online: </span></div>
+      <div class="delete"> <span id="removeAccount">remove account</span> </div>
     </div>
   </div>
 </body>
@@ -158,6 +158,15 @@ function docReady() {
       list += "</li>";
       createElement();
     }
+    if(obj.name.length == 0) {
+      $("#lastOnline").css({ "visibility": "hidden" });
+      $("#removeAccount").css({
+        "visibility": "hidden"
+      });
+      $(".delete").css({ "cursor": "default" });
+    } else {
+      deleteClick();
+    }
     i = 0;
     date = "Last Online: " + obj.date[i];
     $(".usrName").children("span").text(obj.name[i]);
@@ -191,6 +200,7 @@ function docReady() {
         obj = JSON.stringify(obj);
         obj = obj.replace(/,null/g, " ");
         obj = obj.replace(/null,/g, " ");
+        obj = obj.replace(/null/g, " ");
         obj = JSON.parse(obj);
         socket.emit("return", obj);
         console.log("TODO: add a confirm box");
@@ -265,9 +275,12 @@ function docReady() {
         $(this).fadeIn(255);
       })
     })
-    $(".delete").click(function() {
-      removeAcc();
-    })
+
+    function deleteClick() {
+      $(".delete").click(function() {
+        removeAcc();
+      });
+    }
     //simulate click with pictures
     $(".login").click(function() {
       console.log("TODO: take steam path,name and pass from json and start steam with credentials");
