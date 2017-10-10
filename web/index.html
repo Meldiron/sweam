@@ -58,13 +58,12 @@ var socket = io("http://localhost:9000");
 
 socket.on("send", function(message) {
   obj = message;
-  console.log(message);
   docReady()
 });
 
 socket.on("os", function(message) {
   os = message;
-  console.log(os)
+  console.log(os);
 });
 
 var url = "";
@@ -82,7 +81,6 @@ document.addEventListener('drop', function(event) {
   event.preventDefault();
   return false;
 });
-
 
 (function() {
   var holder = document.getElementById('drag-file');
@@ -116,29 +114,23 @@ document.addEventListener('drop', function(event) {
 })();
 
 function changeImg() {
-  console.log(url)
   $(".nPic").css({
     backgroundImage: url
   })
 }
 
 function docReady() {
-
   $(document).ready(function() {
-
-
-
-
-
 
     let usrImg = " ";
     let usrName = " "
     let list = "";
     let showInfo = "";
     let i = 0;
+    //get date
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
     if(dd < 10) {
       dd = '0' + dd
@@ -147,34 +139,27 @@ function docReady() {
       mm = '0' + mm
     }
     today = dd + '/' + mm + '/' + yyyy;
-
-
-    function loadDoc() {
-      for(let i = 0; i <= obj.name.length - 1; i++) {
-        usrImg = obj.imgPath[i];
-        usrName = obj.usrName[i];
-        list += "<li class='accounts'>";
-        list += "<div class='pic'>";
-        list += "<img src='" + usrImg + "' class='img'>";
-        list += "</div>";
-        list += "<div class='padText'>";
-        list += "&nbsp;&nbsp;" + usrName;
-        list += "</div>";
-        list += "</li>";
-        createElement();
-
-      }
-      i = 0;
-      date = "Last Online: " + obj.date[i];
-      $(".usrName").children("span").text(obj.name[i]);
-      $(".date").children("span").text(date);
+    for(let i = 0; i <= obj.name.length - 1; i++) {
+      usrImg = obj.imgPath[i];
+      usrName = obj.usrName[i];
+      list += "<li class='accounts'>";
+      list += "<div class='pic'>";
+      list += "<img src='" + usrImg + "' class='img'>";
+      list += "</div>";
+      list += "<div class='padText'>";
+      list += "&nbsp;&nbsp;" + usrName;
+      list += "</div>";
+      list += "</li>";
+      createElement();
     }
-    loadDoc()
+    i = 0;
+    date = "Last Online: " + obj.date[i];
+    $(".usrName").children("span").text(obj.name[i]);
+    $(".date").children("span").text(date);
     //add account
     function createElement() {
       $("#myList").append(list);
       list = "";
-      animation();
     }
     //update name and date
     function editInfo() {
@@ -196,13 +181,11 @@ function docReady() {
       obj = JSON.stringify(obj);
       obj = obj.replace(/,null/g, " ");
       obj = JSON.parse(obj);
-      console.log(obj);
       socket.emit("return", obj);
-      console.log("TODO: add a confirm box and reload page");
+      console.log("TODO: add a confirm box");
     }
 
     function addAcc() {
-      console.log("TODO: window popup, input for image,usrname, name and password, set today's date");
       $(".button").click(function() {
         console.log(imgPath);
         if(imgPath == "") {
@@ -221,7 +204,6 @@ function docReady() {
           obj.name.push(name);
           obj.pass.push(pass);
           obj.date.push(today);
-          console.log(obj);
           socket.emit("return", obj);
         }
       })
@@ -238,43 +220,38 @@ function docReady() {
       $('.start, .bg').width($(window).width() - $(".table").width() - 15);
     });
 
-    function animation() {
-      //make pictures bigger on hover 
-      $(".accounts").children(".img").off();
-      $(".bg").children(".img").off();
-      $(".accounts").off();
+    //make pictures bigger on hover 
+    $(".accounts").children(".img").off();
+    $(".bg").children(".img").off();
+    $(".accounts").off();
 
-      $(".accounts").hover(
-        function() {
-          $(this).children(".pic").stop(true).animate({
-            width: "75px",
-            height: "75px"
-          }, 255);
-        },
-        function() {
-          $(this).children(".pic").stop(true).animate({
-            width: "60px",
-            height: "60px"
-          }, 255);
-        }
-      );
-      //change to respective bg image on account click
-      $(".accounts").click(function(e) {
-        i = $(this).index() - 1;
-        editInfo();
-        image = $("img", this).attr("src");
-        $(".bg").children("img").fadeOut(255, function() {
-          $(this).attr("src", image);
-          $(this).fadeIn(255);
-        })
+    $(".accounts").hover(
+      function() {
+        $(this).children(".pic").stop(true).animate({
+          width: "75px",
+          height: "75px"
+        }, 255);
+      },
+      function() {
+        $(this).children(".pic").stop(true).animate({
+          width: "60px",
+          height: "60px"
+        }, 255);
+      }
+    );
+    //change to respective bg image on account click
+    $(".accounts").click(function(e) {
+      i = $(this).index() - 1;
+      editInfo();
+      image = $("img", this).attr("src");
+      $(".bg").children("img").fadeOut(255, function() {
+        $(this).attr("src", image);
+        $(this).fadeIn(255);
       })
-    }
-    animation();
-
+    })
     $(".delete").click(function() {
       removeAcc();
     })
-
     //simulate click with pictures
     $(".login").click(function() {
       console.log("TODO: take steam path,name and pass from json and start steam with credentials");
@@ -300,7 +277,6 @@ function docReady() {
         }, 255);
       }
     );
-
     $("#addtext").click(function() {
       $(".main").css({ "filter": "blur(10px)", "pointerEvents": "none" });
       $(".newAcc").css({ "pointerEvents": "auto", "visibility": "visible" });

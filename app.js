@@ -22,7 +22,6 @@ io.on("connection", function(socket) {
   io.sockets.emit("send", obj);
   io.sockets.emit("os", os)
   socket.on("return", function(message) {
-    console.log(message);
     obj = JSON.stringify(message, null, 1);
     fs.writeFile("save.json", obj);
     mainWindow.reload();
