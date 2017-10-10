@@ -196,8 +196,7 @@ function docReady() {
         console.log("TODO: add a confirm box");
       })
       $("#no").click(function() {
-        $(".main").css({ "filter": "blur(0px)", "pointerEvents": "auto" });
-        $(".confirm").css({ "visibility": "hidden" });
+        socket.emit("return", obj);
       })
     }
 
