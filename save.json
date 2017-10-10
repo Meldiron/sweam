@@ -1,0 +1,23 @@
+{
+ "path": "C:/Program Files (x86)/Steam",
+ "imgPath": [
+  "images/43.jpg",
+  "images/4k.jpg"
+ ],
+ "usrName": [
+  "usrName1",
+  "usrName2"
+ ],
+ "name": [
+  "steamName1",
+  "steamName2"
+ ],
+ "pass": [
+  "1234",
+  "5678"
+ ],
+ "date": [
+  "06/10/2017",
+  "04/10/2017"
+ ]
+}

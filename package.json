@@ -1,0 +1,22 @@
+{
+  "name": "sweam",
+  "version": "1.0.0",
+  "description": "Instantly switch steam accounts",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "steam",
+    "account"
+  ],
+  "author": "SaintusMarcus",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.7.8",
+    "express": "^4.16.1",
+    "jquery": "^3.2.1",
+    "jqueryui": "^1.11.1",
+    "socket.io": "^2.0.3"
+  }
+}

@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+
+<head>
+  <title> Sweam </title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+  <link rel="icon" href="images/icon.png">
+</head>
+
+<body>
+  <div class="newAcc"><span id="newAcc"> Display name :
+    <br>
+    <br> &nbsp;&nbsp;&nbsp;
+    <input placeholder="name" class="addInput" id="dName">
+    <br>
+    <br>Steam Name :
+    <br>
+    <br> &nbsp;&nbsp;&nbsp;
+    <input placeholder="Steam Name" class="addInput" id="sName">
+    <br>
+    <br> Steam Password :
+    <br>
+    <br> &nbsp;&nbsp;&nbsp;
+    <input placeholder="password" type="password" class="addInput" id="sPass">
+  </span>
+    <span id="warning"> Fill out all the fields</span>
+    <div class="nPic" id="drag-file"></div>
+    <div class="button"><span id="addButton"> Submit </span> </div>
+  </div>
+  <div class="main">
+    <div class="table">
+      <ol id="myList" start="1">
+        <li id="header" style="text-align: center; background-color: #230F6E">
+          <span id="addtext"> + </span> Switch accounts
+        </li>
+      </ol>
+    </div>
+    <div class="bg "><img src="images/default.jpg" class="bgimg "> </div>
+    <div class="start">
+      <div class="usrName"><span> </span></div>
+      <div class="login">
+        <img src="images/login.jpg" id="noround">
+      </div>
+      <div class="date"><span> Last Online: </span></div>
+      <div class="delete"> remove account </div>
+    </div>
+  </div>
+</body>
+</script>
+<script>
+window.$ = window.jQuery = require("jquery");
+require("jqueryui");
+var io = require("socket.io-client");
+
+var socket = io("http://localhost:9000");
+
+socket.on("send", function(message) {
+  obj = message;
+  console.log(message);
+  docReady()
+});
+
+socket.on("os", function(message) {
+  os = message;
+  console.log(os)
+});
+
+var url = "";
+var imgPath = "";
+var obj = "";
+var os = "";
+
+//prevent redirecting on image drag n' drop
+document.addEventListener('dragover', function(event) {
+  event.preventDefault();
+  return false;
+});
+
+document.addEventListener('drop', function(event) {
+  event.preventDefault();
+  return false;
+});
+
+
+(function() {
+  var holder = document.getElementById('drag-file');
+
+  holder.ondragover = () => {
+    $(".newAcc").css({ filter: "blur(5px)" });
+    return false;
+  };
+
+  holder.ondragleave = () => {
+    $(".newAcc").css({ filter: "blur(0px)" });
+    return false;
+  };
+
+  holder.ondragend = () => {
+    $(".newAcc").css({ filter: "blur(0px)" });
+    return false;
+  };
+
+  holder.ondrop = (e) => {
+    $(".newAcc").css({ filter: "blur(0px)" });
+    e.preventDefault();
+
+    for(let f of e.dataTransfer.files) {
+      imgPath = f.path.replace(/\\/g, "/");
+      url = "url('" + imgPath + "')";
+      changeImg();
+    }
+    return false;
+  };
+})();
+
+function changeImg() {
+  console.log(url)
+  $(".nPic").css({
+    backgroundImage: url
+  })
+}
+
+function docReady() {
+
+  $(document).ready(function() {
+
+
+
+
+
+
+    let usrImg = " ";
+    let usrName = " "
+    let list = "";
+    let showInfo = "";
+    let i = 0;
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd < 10) {
+      dd = '0' + dd
+    }
+    if(mm < 10) {
+      mm = '0' + mm
+    }
+    today = dd + '/' + mm + '/' + yyyy;
+
+
+    function loadDoc() {
+      for(let i = 0; i <= obj.name.length - 1; i++) {
+        usrImg = obj.imgPath[i];
+        usrName = obj.usrName[i];
+        list += "<li class='accounts'>";
+        list += "<div class='pic'>";
+        list += "<img src='" + usrImg + "' class='img'>";
+        list += "</div>";
+        list += "<div class='padText'>";
+        list += "&nbsp;&nbsp;" + usrName;
+        list += "</div>";
+        list += "</li>";
+        createElement();
+
+      }
+      i = 0;
+      date = "Last Online: " + obj.date[i];
+      $(".usrName").children("span").text(obj.name[i]);
+      $(".date").children("span").text(date);
+    }
+    loadDoc()
+    //add account
+    function createElement() {
+      $("#myList").append(list);
+      list = "";
+      animation();
+    }
+    //update name and date
+    function editInfo() {
+      $(".usrName").find("span").fadeTo(255, 0, function() {
+        $(this).stop(true).text(obj.name[i]).fadeTo(255, 1);
+      })
+      date = "Last Online: " + obj.date[i];
+      $(".date").children("span").fadeTo(255, 0, function() {
+        $(this).stop(true).text(date).fadeTo(255, 1);
+      })
+    }
+    //remove account from database
+    function removeAcc() {
+      delete obj.imgPath[i];
+      delete obj.usrName[i];
+      delete obj.name[i];
+      delete obj.pass[i];
+      delete obj.date[i];
+      obj = JSON.stringify(obj);
+      obj = obj.replace(/,null/g, " ");
+      obj = JSON.parse(obj);
+      console.log(obj);
+      socket.emit("return", obj);
+      console.log("TODO: add a confirm box and reload page");
+    }
+
+    function addAcc() {
+      console.log("TODO: window popup, input for image,usrname, name and password, set today's date");
+      $(".button").click(function() {
+        console.log(imgPath);
+        if(imgPath == "") {
+          imgPath = "images/default.jpg";
+        }
+        var usrName = $("#dName").val();
+        var name = $("#sName").val();
+        var pass = $("#sPass").val();
+        if(usrName == "" || name == "" || pass == "") {
+          $("#warning").css({
+            visibility: "visible"
+          })
+        } else {
+          obj.imgPath.push(imgPath);
+          obj.usrName.push(usrName);
+          obj.name.push(name);
+          obj.pass.push(pass);
+          obj.date.push(today);
+          console.log(obj);
+          socket.emit("return", obj);
+        }
+      })
+    }
+
+    var image = $(".img:first").attr("src");
+    $(".bg").children("img").attr("src", image);
+    //change  width on start
+    $('.start').height($(window).height() - 300);
+    $('.start, .bg').width($(window).width() - $(".table").width() - 15);
+    //change width on resize
+    $(window).resize(function() {
+      $('.start').height($(window).height() - 300);
+      $('.start, .bg').width($(window).width() - $(".table").width() - 15);
+    });
+
+    function animation() {
+      //make pictures bigger on hover 
+      $(".accounts").children(".img").off();
+      $(".bg").children(".img").off();
+      $(".accounts").off();
+
+      $(".accounts").hover(
+        function() {
+          $(this).children(".pic").stop(true).animate({
+            width: "75px",
+            height: "75px"
+          }, 255);
+        },
+        function() {
+          $(this).children(".pic").stop(true).animate({
+            width: "60px",
+            height: "60px"
+          }, 255);
+        }
+      );
+      //change to respective bg image on account click
+      $(".accounts").click(function(e) {
+        i = $(this).index() - 1;
+        editInfo();
+        image = $("img", this).attr("src");
+        $(".bg").children("img").fadeOut(255, function() {
+          $(this).attr("src", image);
+          $(this).fadeIn(255);
+        })
+      })
+    }
+    animation();
+
+    $(".delete").click(function() {
+      removeAcc();
+    })
+
+    //simulate click with pictures
+    $(".login").click(function() {
+      console.log("TODO: take steam path,name and pass from json and start steam with credentials");
+      $(this).children("img").attr("src", "images/login1.jpg");
+      $(this).css("backgroundColor", "#13083C");
+      setTimeout(function() {
+        $(".login").children("img").attr("src", "images/login.jpg");
+        $(".login").css("backgroundColor", "#230F6E");
+      }, 50)
+    });
+    //make login bigger on hover
+    $(".login").hover(
+      function() {
+        $(this).stop(true).animate({
+          width: "32%",
+          height: "14%"
+        }, 255);
+      },
+      function() {
+        $(this).stop(true).animate({
+          width: "30%",
+          height: "12%"
+        }, 255);
+      }
+    );
+
+    $("#addtext").click(function() {
+      $(".main").css({ "filter": "blur(10px)", "pointerEvents": "none" });
+      $(".newAcc").css({ "pointerEvents": "auto", "visibility": "visible" });
+      addAcc();
+    });
+  })
+}
+</script>
+
+</html>
