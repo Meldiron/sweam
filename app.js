@@ -4,16 +4,9 @@ var path = require("path");
 var fs = require("fs");
 var { app, BrowserWindow } = electron;
 
-
-
-
 var api = require("express")();
 var http = require("http").Server(api);
 var io = require("socket.io")(http);
-
-
-
-
 
 io.on("connection", function(socket) {
   var obj = JSON.parse(fs.readFileSync("save.json"));

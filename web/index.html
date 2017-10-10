@@ -60,7 +60,7 @@ window.$ = window.jQuery = require("jquery");
 require("jqueryui");
 var io = require("socket.io-client");
 
-var socket = io("http://localhost:9000");
+var socket = io("http://127.0.0.1:9000");
 
 socket.on("send", function(message) {
   obj = message;
