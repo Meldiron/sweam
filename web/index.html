@@ -56,6 +56,10 @@
 </body>
 </script>
 <script>
+//Look, I know this code is REALLY messy, but hey, it works.
+//I'm still learning, I will probably redo the code once I actually figure out what I'm doing
+
+
 window.$ = window.jQuery = require("jquery");
 require("jqueryui");
 var io = require("socket.io-client");
@@ -236,7 +240,7 @@ function docReady() {
           obj.date.push(today);
           socket.emit("return", obj);
         }
-      })
+      });
     }
 
     var image = $(".img:first").attr("src");
@@ -295,9 +299,7 @@ function docReady() {
       login.path = obj.path;
       login.steamName = obj.name[i];
       login.steamPass = obj.pass[i];
-      console.log(login)
       socket.emit("login", login);
-      console.log("TODO: take steam path,name and pass from json and start steam with credentials");
       $(this).children("img").attr("src", "images/login1.jpg");
       $(this).css("backgroundColor", "#13083C");
       setTimeout(function() {
@@ -328,9 +330,7 @@ function docReady() {
       addAcc();
     });
     $("#x").click(function() {
-      socket.emit("return", obj)
-      console.log(obj)
-
+      socket.emit("return", obj);
     })
   })
 }
