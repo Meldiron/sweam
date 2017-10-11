@@ -1,9 +1,9 @@
 $(document).ready(function() {
   let obj = {
     "path": "C:/Program Files (x86)/Steam",
-    "imgPath": ["default.jpg", "Iceberg.png", "lakeside.jpg"],
-    "usrName": ["account 1", "account 2", "account 3"],
-    "name": ["steam 1", "steam 2", "steam 3"],
+    "imgPath": ["default.jpg", "lakeside.jpg"],
+    "usrName": ["account 1", "account 2"],
+    "name": ["steam 1", "steam 2"],
     "pass": [],
     "date": ["06/10/2017", "04/10/2017", "12/8/1998"]
 
