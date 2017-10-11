@@ -1,0 +1,31 @@
+.main {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.wrap {
+  width: 800px;
+  height: 450px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.site {
+  width: 1280px;
+  height: 786px;
+  border: 0;
+
+  -ms-transform: scale(0.50);
+  -moz-transform: scale(0.50);
+  -o-transform: scale(0.50);
+  -webkit-transform: scale(0.50);
+  transform: scale(0.50);
+
+  -ms-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
