@@ -3,7 +3,7 @@ var url = require("url");
 var path = require("path");
 var fs = require("fs");
 var { app, BrowserWindow } = electron;
-
+var { exec } = require("child_process");
 var api = require("express")();
 var http = require("http").Server(api);
 var io = require("socket.io")(http);
@@ -19,26 +19,24 @@ io.on("connection", function(socket) {
     fs.writeFile("save.json", obj);
     mainWindow.reload();
   });
+  socket.on("login", function(message) {
+    console.log("recieved login request");
+    console.log(message);
+    var login = message;
+    if(os == "win32") {
+      var start = "start Steam -login" + " " + login.steamName + " " + login.steamPass;
+      exec('taskkill /f /im "steam.exe"');
+      setTimeout(function() {
+        exec(start, { cwd: login.path });
+      }, 500);
+    }
+  });
 });
 
 
 http.listen(9000, "127.0.0.1", function() {
   console.log("listening on 9000")
 })
-
-
-/*
-//read json
-var data = JSON.parse(fs.readFileSync("save.json"));
-console.log(data);
-data.usrName.push("fuck");
-//write to json 
-var data = JSON.stringify(data, null, 1);
-fs.writeFile("save.json", data, finished);
-
-function finished() {
-  console.log("finished")
-}*/
 
 
 var mainWindow;

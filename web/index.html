@@ -11,7 +11,7 @@
 
 <body>
   <div class="confirm">
-    <br>Do you really want to remove this account?
+    <br>Are you sure you want to remove this account?
     <br>
     <div class="confButton" id="yes"></div>
     <div class="confButton" id="no"></div>
@@ -164,6 +164,10 @@ function docReady() {
         "visibility": "hidden"
       });
       $(".delete").css({ "cursor": "default" });
+      $(".login").css({
+        "visibility": "hidden",
+        "cursor": "default"
+      })
     } else {
       deleteClick();
     }
@@ -283,6 +287,16 @@ function docReady() {
     }
     //simulate click with pictures
     $(".login").click(function() {
+      var login = {
+        "path": "",
+        "steamName": "",
+        "steamPass": ""
+      }
+      login.path = obj.path;
+      login.steamName = obj.name[i];
+      login.steamPass = obj.pass[i];
+      console.log(login)
+      socket.emit("login", login);
       console.log("TODO: take steam path,name and pass from json and start steam with credentials");
       $(this).children("img").attr("src", "images/login1.jpg");
       $(this).css("backgroundColor", "#13083C");
@@ -290,6 +304,8 @@ function docReady() {
         $(".login").children("img").attr("src", "images/login.jpg");
         $(".login").css("backgroundColor", "#230F6E");
       }, 50)
+      obj.date[i] = today;
+      socket.emit("return", obj);
     });
     //make login bigger on hover
     $(".login").hover(
