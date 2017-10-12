@@ -1,4 +1,5 @@
 //my script
+//add try catch on steam start
 var electron = require("electron");
 var url = require("url");
 var path = require("path");
