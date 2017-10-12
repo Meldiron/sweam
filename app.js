@@ -60,4 +60,9 @@ app.on("ready", function() {
     protocol: "file",
     slashes: true
   }));
+
+  app.on('window-all-closed', function() {
+    app.quit();
+    console.log("Quitting sweam...")
+  });
 });
