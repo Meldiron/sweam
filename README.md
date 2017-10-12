@@ -1,6 +1,6 @@
 # sweam
 TODO in order of importance:
 
-multiplatform support
+linux support
 
 add animation before json finishes loading
