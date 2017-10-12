@@ -1,10 +1,14 @@
 {
   "name": "sweam",
+  "productName": "sweam",
   "version": "1.0.0",
-  "description": "Instantly switch steam accounts",
+  "description": "easily switch between steam accounts",
   "main": "app.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"sweam\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
   },
   "keywords": [
     "steam",
@@ -18,5 +22,8 @@
     "jquery": "^3.2.1",
     "jqueryui": "^1.11.1",
     "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "electron-packager": "^9.1.0"
   }
 }

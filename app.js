@@ -52,8 +52,8 @@ app.on("ready", function() {
     "minHeight": 600,
     "minWidth": 640
   });
-  /*//remove top menu
-  mainWindow.setMenu(null);*/
+  //remove top menu
+  //mainWindow.setMenu(null);
   //load HTML into window
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, "web/index.html"),
