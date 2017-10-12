@@ -1,3 +1,4 @@
+//my script
 var electron = require("electron");
 var url = require("url");
 var path = require("path");
