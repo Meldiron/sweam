@@ -4,12 +4,13 @@
       "displayName": "Meldiron",
       "description": "Main account",
       "lastLogin": -1,
-      "createDate": 1508441297920,
+      "createDate": 1508446412479,
       "name": "meldironsk",
       "password": "melpass",
       "img": "http://localhost:3000/assets/images/steam.svg",
-      "showPass": false,
-      "id": "a8c74350-b503-11e7-8df7-f3043b116976"
+      "showPass": true,
+      "id": "914a6c00-b50f-11e7-94c9-3f18acf3bdd0"
     }
-  ]
+  ],
+  "activeuser": 0
 }

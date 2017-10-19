@@ -24,13 +24,18 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 db.defaults(
-  { users: [] }
+  { users: [], activeuser: 0 }
 ).write();
 
 users = db.get('users').value();
 
 io.on("connection", function(socket) {
   socket.emit('newData', users);
+  socket.emit('setActive', db.get('activeuser').value());
+
+  socket.on('newActiveUser', (data) => {
+    db.set('activeuser', data).write();
+  });
 
   socket.on('openUrl', (data) => {
     electron.shell.openExternal(data);
@@ -79,6 +84,8 @@ io.on("connection", function(socket) {
 
             db.get('users').remove({ id: data }).write();
 
+            db.set('activeuser', users.length -1).write();
+
             socket.emit('newData', users);
             callback({ status: 'success' });
           }
@@ -87,11 +94,131 @@ io.on("connection", function(socket) {
       } else {
         db.get('users').remove({ id: data }).write();
 
+        db.set('activeuser', users.length -1).write();
+
         socket.emit('newData', users);
         callback({ status: 'success' });
       }
     } else {
       callback({ status: 'error', msg: 'User not found. Reload app please.' });
+    }
+  });
+
+  socket.on('updateUser', (obj, callback) => {
+    let oldUser = obj.oldUser;
+    let data = obj.newData;
+
+    if(data.displayName == '') {
+      return callback({ status: "error", msg: "Display name can't be empty." });
+    } else if(data.description == '') {
+      data.description = "No description";
+    } else if(data.name == '') {
+      return callback({ status: "error", msg: "Steam username can't be empty." });
+    } else if(data.password == '') {
+      return callback({ status: "error", msg: "Steam password can't be empty." });
+    }
+
+    for(var i = 0; i < users.length; i++) {
+      if(data.displayName == users[i].displayName && users[i].id != oldUser) {
+        return callback({ status: "error", msg: "User with display name '" + data.displayName + "' already exists." });
+      } else if(data.name == users[i].name && users[i].id != oldUser) {
+        return callback({ status: "error", msg: "User with steam username '" + data.name + "' already exists." });
+      }
+    }
+
+    if(data.img.indexOf('/photos/' + oldUser) != -1) {
+      db.get('users').find({ id: oldUser }).assign({
+        displayName: data.displayName,
+        description: data.description,
+        name: data.name,
+        password: data.password
+      }).write();
+
+      socket.emit('newData', users);
+      socket.emit('setActive', users.length - 1);
+      return callback({ status: 'success' });
+    } else if(data.img == 'http://localhost:' + appPort + '/assets/images/steam.svg') {
+      db.get('users').find({ id: oldUser }).assign({
+        displayName: data.displayName,
+        description: data.description,
+        name: data.name,
+        password: data.password
+      }).write();
+
+      socket.emit('newData', users);
+      socket.emit('setActive', users.length - 1);
+      return callback({ status: 'success' });
+    }else if(data.img != '') {
+      let newid = uuid();
+
+      if(fs.existsSync(__dirname + "/storage/photos/" + oldUser + ".png")) {
+        fs.unlink(__dirname + "/storage/photos/" + oldUser + ".png", (err) => {
+          if(err) {
+            return callback({ status: 'error', msg: 'Unexpected error while removing image.' });
+          }
+  
+          fs_extra.copy(data.img, __dirname + "/storage/photos/" + newid + ".png", (err) => {
+            if(err) {
+              return callback({ status: 'error', msg: 'Unexpected error while saving image.' });
+            }
+    
+            data.img = "http://localhost:" + appPort + "/photos/" + newid;
+    
+            db.get('users').find({ id: oldUser }).assign({
+              displayName: data.displayName,
+              description: data.description,
+              name: data.name,
+              password: data.password,
+              img: data.img,
+              id: newid
+            }).write();
+    
+            socket.emit('newData', users);
+            socket.emit('setActive', users.length - 1);
+            return callback({ status: 'success' });
+          });
+  
+        });  
+      } else {
+        fs_extra.copy(data.img, __dirname + "/storage/photos/" + newid + ".png", (err) => {
+          if(err) {
+            return callback({ status: 'error', msg: 'Unexpected error while saving image.' });
+          }
+  
+          data.img = "http://localhost:" + appPort + "/photos/" + newid;
+  
+          db.get('users').find({ id: oldUser }).assign({
+            displayName: data.displayName,
+            description: data.description,
+            name: data.name,
+            password: data.password,
+            img: data.img,
+            id: newid
+          }).write();
+  
+          socket.emit('newData', users);
+          socket.emit('setActive', users.length - 1);
+          return callback({ status: 'success' });
+        });
+      }   
+    } else {
+      fs.unlink(__dirname + "/storage/photos/" + oldUser + ".png", (err) => {
+        if(err) {
+          return callback({ status: 'error', msg: 'Unexpected error while removing image.' });
+        }
+
+        db.get('users').find({ id: oldUser }).assign({
+          displayName: data.displayName,
+          description: data.description,
+          name: data.name,
+          password: data.password,
+          img: "http://localhost:" + appPort + "/assets/images/steam.svg"
+        }).write();
+
+        socket.emit('newData', users);
+        socket.emit('setActive', users.length - 1);
+        return callback({ status: 'success' });
+      });
     }
   });
 
@@ -124,6 +251,7 @@ io.on("connection", function(socket) {
       data.img = "http://localhost:" + appPort + "/assets/images/steam.svg";
 
       db.get('users').push(data).write();
+      db.set('activeuser', users.length -1).write();
 
       socket.emit('newData', users);
       socket.emit('setActive', users.length - 1);
@@ -132,7 +260,7 @@ io.on("connection", function(socket) {
 
       fs_extra.copy(data.img, __dirname + "/storage/photos/" + newid + ".png", (err) => {
         if(err) {
-          return callback({ status: 'error', msg: 'Unexpected error whiel saving image.' });
+          return callback({ status: 'error', msg: 'Unexpected error while saving image.' });
         }
 
         data.img = "http://localhost:" + appPort + "/photos/" + newid;

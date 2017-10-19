@@ -30,6 +30,7 @@ export class ApiService {
     this.socket = new io('http://localhost:3000/');
 
     this.socket.on('newData', (data) => {
+      console.log(data);
       this.dataFromServer = data;
       this.events.emit({ status: 'newData', val: data });
     });

@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
         this.users = obj.val;
 
         if(this.users.length -1 < this.activeUser) {
-          this.activeUser = 0;
+          this.activeUser = this.users.length -1;
         }
         if(this.users.length === 0) {
           this.activeUser = 0;

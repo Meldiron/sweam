@@ -113,7 +113,7 @@
           </div>
           <div class="panel-body" style="text-align: center;" id="settingsContent" [ngStyle]="{ display: displayOpened }">
 
-            <a class="btn btn-w-md btn-info" style="width: 60%;">Update Informations</a> <br><br>
+            <a class="btn btn-w-md btn-info" style="width: 60%;" (click)="updateAcc()">Update Informations</a> <br><br>
             <a class="btn btn-w-md btn-danger" style="width: 60%;" (click)="removeAccount(user.id)">Remove Account</a>
 
           </div>

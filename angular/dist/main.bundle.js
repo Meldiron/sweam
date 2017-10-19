@@ -36,7 +36,7 @@ var AppComponent = (function () {
                 _this.isLoaded = true;
                 _this.users = obj.val;
                 if (_this.users.length - 1 < _this.activeUser) {
-                    _this.activeUser = 0;
+                    _this.activeUser = _this.users.length - 1;
                 }
                 if (_this.users.length === 0) {
                     _this.activeUser = 0;
@@ -317,6 +317,148 @@ var BodyComponent = (function () {
             });
         }
     };
+    BodyComponent.prototype.updateAcc = function () {
+        var _this = this;
+        var info = {
+            displayName: '',
+            description: '',
+            lastLogin: -1,
+            createDate: -1,
+            name: '',
+            password: '',
+            img: this.user.img
+        };
+        var modalThreeHtml = 'Select photo you want ti see in app<br><br>' +
+            '<label class="btn btn-accent" for="file-selector2">' +
+            '<input id="file-selector2" type="file" style="display: none;">';
+        if (this.user.img.indexOf('assets/images/steam.svg') != -1) {
+            modalThreeHtml += '<span id="upload-file-info2" style="cursor: pointer;"> Select file </span>' +
+                '</label> <small id="upload-file-info3"> Click to choose file </small>';
+            modalThreeHtml += '<br><br> <img src="" alt="" style="display: none;  margin-left: calc(50% - 50px); width: 120px; height: 120px; border-radius: 50%;" id="upload-file-img" /> ';
+        }
+        else {
+            modalThreeHtml += '<span id="upload-file-info2" style="cursor: pointer;"> Select another file </span>' +
+                '</label> <small id="upload-file-info3"> Click to choose file </small>';
+            modalThreeHtml += '<br><br> <img src="' + this.user.img + '" alt="" style="display: block;  margin-left: calc(50% - 50px); width: 120px; height: 120px; border-radius: 50%;" id="upload-file-img" /> ';
+            modalThreeHtml += '<br><a id="clearImageBtn" class="btn btn-w-md btn-danger" style="width: 60%;">Clear Image</a>';
+        }
+        var steps = [
+            {
+                title: 'Account Display info',
+                text: 'Enter informations you will see in app',
+                html: 'Enter informations you will see in app' +
+                    '<input placeholder="Display name" value="' + this.user.displayName + '" id="swal-input1" class="swal2-input">' +
+                    '<input placeholder="Description [optional]" value="' + this.user.description + '" id="swal-input2" class="swal2-input">',
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: 'Next',
+                cancelButtonText: 'Cancel',
+                progressSteps: ['1', '2', '3'],
+                onOpen: function () {
+                    document.getElementById("swal-input1").focus();
+                },
+                preConfirm: function () {
+                    var el = document.getElementById('swal-input1');
+                    info.displayName = el.value;
+                    el = document.getElementById('swal-input2');
+                    info.description = el.value;
+                    return new Promise(function (resolve) {
+                        resolve('');
+                    });
+                }
+            },
+            {
+                title: 'Steam account info',
+                html: 'Enter informations app will enter to steam' +
+                    '<input placeholder="Steam username" id="swal-input3" value="' + this.user.name + '" class="swal2-input">' +
+                    '<input placeholder="Steam password" type="password" value="' + this.user.password + '" id="swal-input4" class="swal2-input">',
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: 'Next',
+                cancelButtonText: 'Cancel',
+                progressSteps: ['1', '2', '3'],
+                onOpen: function () {
+                    document.getElementById("swal-input3").focus();
+                },
+                preConfirm: function () {
+                    var el = document.getElementById('swal-input3');
+                    info.name = el.value;
+                    el = document.getElementById('swal-input4');
+                    info.password = el.value;
+                    return new Promise(function (resolve) {
+                        resolve('');
+                    });
+                }
+            },
+            {
+                title: 'Account photo info',
+                html: modalThreeHtml,
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonText: 'Create',
+                cancelButtonText: 'Cancel',
+                progressSteps: ['1', '2', '3'],
+                onOpen: function () {
+                    if (document.getElementById('clearImageBtn') !== null) {
+                        document.getElementById('clearImageBtn').addEventListener('click', function () {
+                            document.getElementById('upload-file-info2').innerHTML = 'Select file';
+                            document.getElementById('upload-file-info3').innerHTML = 'Click to choose file';
+                            document.getElementById('upload-file-img').style.display = 'none';
+                            document.getElementById('clearImageBtn').style.display = 'none';
+                            var el = document.getElementsByClassName('swal2-modal')[0];
+                            el.style.minHeight = '0';
+                            info.img = '';
+                        });
+                    }
+                    document.getElementById('file-selector2').addEventListener('change', function (event) {
+                        if (event.target.value !== '') {
+                            var path = event.target.files[0].path;
+                            document.getElementById('upload-file-info2').innerHTML = 'Select another file';
+                            document.getElementById('upload-file-info3').innerHTML = path;
+                            document.getElementById('upload-file-img').style.display = 'block';
+                            document.getElementById('upload-file-img').setAttribute('src', 'file://' + path);
+                        }
+                        else {
+                            document.getElementById('upload-file-info2').innerHTML = 'Select file';
+                            document.getElementById('upload-file-info3').innerHTML = 'Click to choose file';
+                            document.getElementById('upload-file-img').style.display = 'none';
+                        }
+                    });
+                },
+                preConfirm: function () {
+                    var el = document.getElementById('file-selector2');
+                    if (el.files.length !== 0) {
+                        info.img = el.files[0].path;
+                    }
+                    return new Promise(function (resolve) {
+                        resolve('');
+                    });
+                }
+            },
+        ];
+        this.alert.swal.queue(steps).then(function () {
+            info.createDate = Date.now();
+            console.log(info);
+            _this.api.socket.emit('updateUser', { oldUser: _this.user.id, newData: info }, function (obj) {
+                console.log(obj);
+                if (obj.status === 'success') {
+                    _this.alert.swal({
+                        title: 'User edited!',
+                        html: 'User successfully edited :)',
+                        confirmButtonText: 'Great!',
+                        type: 'success'
+                    });
+                }
+                else {
+                    _this.alert.swal({
+                        title: 'Error!',
+                        html: obj.msg,
+                        type: 'error'
+                    });
+                }
+            });
+        });
+    };
     return BodyComponent;
 }());
 __decorate([
@@ -510,7 +652,6 @@ var MenuComponent = (function () {
         this.isAnimating = false;
         this.arrowRotate = { value: 90 };
         this.displayOpened = 'block';
-        this.fileSelectText = 'Select file';
     }
     MenuComponent.prototype.ngOnInit = function () {
     };
@@ -584,6 +725,7 @@ var MenuComponent = (function () {
     };
     MenuComponent.prototype.switchToUser = function (id) {
         this.setActiveUser.emit(id);
+        this.api.socket.emit('newActiveUser', id);
     };
     MenuComponent.prototype.createAcc = function () {
         var _this = this;
@@ -649,7 +791,7 @@ var MenuComponent = (function () {
                 html: 'Select photo you want ti see in app<br><br>' +
                     '<label class="btn btn-accent" for="file-selector2">' +
                     '<input id="file-selector2" type="file" style="display: none;">' +
-                    '<span id="upload-file-info2" style="cursor: pointer;"> ' + this.fileSelectText + ' </span>' +
+                    '<span id="upload-file-info2" style="cursor: pointer;"> Select file </span>' +
                     '</label> <small id="upload-file-info3"> Click to choose file </small>' +
                     '<br><br> <img src="" alt="" style="display: none;  margin-left: calc(50% - 50px); width: 120px; height: 120px; border-radius: 50%;" id="upload-file-img" /> ',
                 showCancelButton: true,
@@ -852,7 +994,7 @@ module.exports = "\n\n<div *ngIf=\"isLoaded\">\n\n  <app-git></app-git>\n\n  <di
 /***/ 191:
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"content\" id=\"mainContent\">\n  <div class=\"container-fluid\">\n\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <div class=\"view-header\">\n          <div class=\"pull-right text-right\" style=\"line-height: 18px; padding-top: 5px;\">\n            <small>\n              {{ timeNow | date:'dd.MM.yyyy' }}<br>\n              <span class=\"c-white\">{{ timeNow | date:'hh : mm : ss' }}</span>\n            </small>\n          </div>\n          <div class=\"header-icon\">\n            <i class=\"pe page-header-icon pe-7s-user\"></i>\n          </div>\n          <div class=\"header-title\">\n            <h3>{{ user.displayName }}</h3>\n            <small>\n              {{ user.description }}\n            </small>\n          </div>\n        </div>\n        <hr>\n      </div>\n    </div>\n\n    <div class=\"row\">\n\n      <div class=\"col-md-7\">\n\n\n        <div class=\"panel panel-filled\" style=\"margin-top: 60px;\">\n          <div class=\"panel-heading\">\n            <div class=\"panel-tools\" (click)=\"openSettingsPopup(user)\">\n              <a class=\"panel-close\" style=\"font-size:25px;\"><i style=\"color: #fff;\" class=\"fa fa-cog\"></i></a>\n            </div>\n          </div>\n\n          <div style=\"width: 100%;\">\n\n            <img style=\"width: 120px; height: 120px; margin-left: calc(50% - 60px); margin-top: -80px; border-radius: 50%;\" [src]=\"user.img\" alt=\"User\">\n          </div>\n\n          <div class=\"panel-body\" style=\"margin-top: 20px; margin-bottom: 30px;\">\n            <h1 style=\"text-align: center; color: #ffffff;\"> {{ user.displayName }} </h1>\n            <h3 style=\"text-align: center; margin-top: -10px;\"> <small>Steam Account</small> </h3>\n\n\n            <div class=\"table-responsive\" style=\"margin-top:30px;\">\n              <table class=\"table table-hover table-striped\">\n                <tbody>\n                <tr>\n                  <td>Description: </td>\n                  <td> {{ user.description }} </td>\n                </tr>\n                <tr>\n                  <td>Username: </td>\n                  <td> {{ user.name }} </td>\n                </tr>\n                <tr>\n                  <td>Password: </td>\n                  <td> {{ pass(user.password) }} </td>\n                </tr>\n\n                <tr>\n                  <td>Last Login: </td>\n                  <td>\n                    <table>\n                      <tr>\n                        <td style=\"width: 70px;\"> {{ user.lastLogin | date:'dd.MM.yyyy' }} </td>\n                        <td style=\"padding-left:10px;\"> | </td>\n                        <td style=\"padding-left:10px\">  {{ user.lastLogin | date:'hh:mm:ss' }} </td>\n                      </tr>\n                    </table>\n                  </td>\n                </tr>\n\n                <tr>\n                  <td>Create date: </td>\n                  <td>\n                    <table>\n                      <tr>\n                        <td style=\"width: 70px;\"> {{ user.createDate | date:'dd.MM.yyyy' }} </td>\n                        <td style=\"padding-left:10px;\"> | </td>\n                        <td style=\"padding-left:10px\"> {{ user.createDate | date:'hh:mm:ss' }} </td>\n                      </tr>\n                    </table>\n                  </td>\n                </tr>\n\n                </tbody>\n              </table>\n            </div>\n\n          </div>\n\n\n        </div>\n\n        <a class=\"btn btn-w-md btn-accent btn-rounded\"\n           style=\"width: 200px; margin-left: calc(50% - 100px); margin-top: -60px; font-size:25px; background: #f6a821; color: #fff;\">LOGIN</a>\n\n      </div>\n\n      <div class=\"col-md-5\">\n\n        <div class=\"panel panel-filled panel-c-accent\" style=\"margin-top: 60px;\">\n          <div class=\"panel-heading\" (click)=\"toggleSettings()\" style=\"cursor: pointer;\">\n            <div class=\"panel-tools\">\n              <a class=\"panel-toggle\"><i class=\"fa fa-chevron-up\" [ngStyle]=\"{ transform: 'rotate(' + settingsRotate.value + 'deg)' }\"></i></a>\n            </div>\n            Settings\n          </div>\n          <div class=\"panel-body\" style=\"text-align: center;\" id=\"settingsContent\" [ngStyle]=\"{ display: displayOpened }\">\n\n            <a class=\"btn btn-w-md btn-info\" style=\"width: 60%;\">Update Informations</a> <br><br>\n            <a class=\"btn btn-w-md btn-danger\" style=\"width: 60%;\" (click)=\"removeAccount(user.id)\">Remove Account</a>\n\n          </div>\n        </div>\n\n      </div>\n\n    </div>\n\n\n  </div>\n</section>\n"
+module.exports = "<section class=\"content\" id=\"mainContent\">\n  <div class=\"container-fluid\">\n\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <div class=\"view-header\">\n          <div class=\"pull-right text-right\" style=\"line-height: 18px; padding-top: 5px;\">\n            <small>\n              {{ timeNow | date:'dd.MM.yyyy' }}<br>\n              <span class=\"c-white\">{{ timeNow | date:'hh : mm : ss' }}</span>\n            </small>\n          </div>\n          <div class=\"header-icon\">\n            <i class=\"pe page-header-icon pe-7s-user\"></i>\n          </div>\n          <div class=\"header-title\">\n            <h3>{{ user.displayName }}</h3>\n            <small>\n              {{ user.description }}\n            </small>\n          </div>\n        </div>\n        <hr>\n      </div>\n    </div>\n\n    <div class=\"row\">\n\n      <div class=\"col-md-7\">\n\n\n        <div class=\"panel panel-filled\" style=\"margin-top: 60px;\">\n          <div class=\"panel-heading\">\n            <div class=\"panel-tools\" (click)=\"openSettingsPopup(user)\">\n              <a class=\"panel-close\" style=\"font-size:25px;\"><i style=\"color: #fff;\" class=\"fa fa-cog\"></i></a>\n            </div>\n          </div>\n\n          <div style=\"width: 100%;\">\n\n            <img style=\"width: 120px; height: 120px; margin-left: calc(50% - 60px); margin-top: -80px; border-radius: 50%;\" [src]=\"user.img\" alt=\"User\">\n          </div>\n\n          <div class=\"panel-body\" style=\"margin-top: 20px; margin-bottom: 30px;\">\n            <h1 style=\"text-align: center; color: #ffffff;\"> {{ user.displayName }} </h1>\n            <h3 style=\"text-align: center; margin-top: -10px;\"> <small>Steam Account</small> </h3>\n\n\n            <div class=\"table-responsive\" style=\"margin-top:30px;\">\n              <table class=\"table table-hover table-striped\">\n                <tbody>\n                <tr>\n                  <td>Description: </td>\n                  <td> {{ user.description }} </td>\n                </tr>\n                <tr>\n                  <td>Username: </td>\n                  <td> {{ user.name }} </td>\n                </tr>\n                <tr>\n                  <td>Password: </td>\n                  <td> {{ pass(user.password) }} </td>\n                </tr>\n\n                <tr>\n                  <td>Last Login: </td>\n                  <td>\n                    <table>\n                      <tr>\n                        <td style=\"width: 70px;\"> {{ user.lastLogin | date:'dd.MM.yyyy' }} </td>\n                        <td style=\"padding-left:10px;\"> | </td>\n                        <td style=\"padding-left:10px\">  {{ user.lastLogin | date:'hh:mm:ss' }} </td>\n                      </tr>\n                    </table>\n                  </td>\n                </tr>\n\n                <tr>\n                  <td>Create date: </td>\n                  <td>\n                    <table>\n                      <tr>\n                        <td style=\"width: 70px;\"> {{ user.createDate | date:'dd.MM.yyyy' }} </td>\n                        <td style=\"padding-left:10px;\"> | </td>\n                        <td style=\"padding-left:10px\"> {{ user.createDate | date:'hh:mm:ss' }} </td>\n                      </tr>\n                    </table>\n                  </td>\n                </tr>\n\n                </tbody>\n              </table>\n            </div>\n\n          </div>\n\n\n        </div>\n\n        <a class=\"btn btn-w-md btn-accent btn-rounded\"\n           style=\"width: 200px; margin-left: calc(50% - 100px); margin-top: -60px; font-size:25px; background: #f6a821; color: #fff;\">LOGIN</a>\n\n      </div>\n\n      <div class=\"col-md-5\">\n\n        <div class=\"panel panel-filled panel-c-accent\" style=\"margin-top: 60px;\">\n          <div class=\"panel-heading\" (click)=\"toggleSettings()\" style=\"cursor: pointer;\">\n            <div class=\"panel-tools\">\n              <a class=\"panel-toggle\"><i class=\"fa fa-chevron-up\" [ngStyle]=\"{ transform: 'rotate(' + settingsRotate.value + 'deg)' }\"></i></a>\n            </div>\n            Settings\n          </div>\n          <div class=\"panel-body\" style=\"text-align: center;\" id=\"settingsContent\" [ngStyle]=\"{ display: displayOpened }\">\n\n            <a class=\"btn btn-w-md btn-info\" style=\"width: 60%;\" (click)=\"updateAcc()\">Update Informations</a> <br><br>\n            <a class=\"btn btn-w-md btn-danger\" style=\"width: 60%;\" (click)=\"removeAccount(user.id)\">Remove Account</a>\n\n          </div>\n        </div>\n\n      </div>\n\n    </div>\n\n\n  </div>\n</section>\n"
 
 /***/ }),
 
@@ -919,6 +1061,7 @@ var ApiService = (function () {
         this.events = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* EventEmitter */]();
         this.socket = new __WEBPACK_IMPORTED_MODULE_1_socket_io_client__('http://localhost:3000/');
         this.socket.on('newData', function (data) {
+            console.log(data);
             _this.dataFromServer = data;
             _this.events.emit({ status: 'newData', val: data });
         });
