@@ -1,0 +1,128 @@
+<section class="content" id="mainContent">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="view-header">
+          <div class="pull-right text-right" style="line-height: 18px; padding-top: 5px;">
+            <small>
+              {{ timeNow | date:'dd.MM.yyyy' }}<br>
+              <span class="c-white">{{ timeNow | date:'hh : mm : ss' }}</span>
+            </small>
+          </div>
+          <div class="header-icon">
+            <i class="pe page-header-icon pe-7s-user"></i>
+          </div>
+          <div class="header-title">
+            <h3>{{ user.displayName }}</h3>
+            <small>
+              {{ user.description }}
+            </small>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-7">
+
+
+        <div class="panel panel-filled" style="margin-top: 60px;">
+          <div class="panel-heading">
+            <div class="panel-tools" (click)="openSettingsPopup(user)">
+              <a class="panel-close" style="font-size:25px;"><i style="color: #fff;" class="fa fa-cog"></i></a>
+            </div>
+          </div>
+
+          <div style="width: 100%;">
+
+            <img style="width: 120px; height: 120px; margin-left: calc(50% - 60px); margin-top: -80px; border-radius: 50%;" [src]="user.img" alt="User">
+          </div>
+
+          <div class="panel-body" style="margin-top: 20px; margin-bottom: 30px;">
+            <h1 style="text-align: center; color: #ffffff;"> {{ user.displayName }} </h1>
+            <h3 style="text-align: center; margin-top: -10px;"> <small>Steam Account</small> </h3>
+
+
+            <div class="table-responsive" style="margin-top:30px;">
+              <table class="table table-hover table-striped">
+                <tbody>
+                <tr>
+                  <td>Description: </td>
+                  <td> {{ user.description }} </td>
+                </tr>
+                <tr>
+                  <td>Username: </td>
+                  <td> {{ user.name }} </td>
+                </tr>
+                <tr>
+                  <td>Password: </td>
+                  <td> {{ pass(user.password) }} </td>
+                </tr>
+
+                <tr>
+                  <td>Last Login: </td>
+                  <td>
+                    <table>
+                      <tr>
+                        <td style="width: 70px;"> {{ user.lastLogin | date:'dd.MM.yyyy' }} </td>
+                        <td style="padding-left:10px;"> | </td>
+                        <td style="padding-left:10px">  {{ user.lastLogin | date:'hh:mm:ss' }} </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Create date: </td>
+                  <td>
+                    <table>
+                      <tr>
+                        <td style="width: 70px;"> {{ user.createDate | date:'dd.MM.yyyy' }} </td>
+                        <td style="padding-left:10px;"> | </td>
+                        <td style="padding-left:10px"> {{ user.createDate | date:'hh:mm:ss' }} </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <a class="btn btn-w-md btn-accent btn-rounded"
+           style="width: 200px; margin-left: calc(50% - 100px); margin-top: -60px; font-size:25px; background: #f6a821; color: #fff;">LOGIN</a>
+
+      </div>
+
+      <div class="col-md-5">
+
+        <div class="panel panel-filled panel-c-accent" style="margin-top: 60px;">
+          <div class="panel-heading" (click)="toggleSettings()" style="cursor: pointer;">
+            <div class="panel-tools">
+              <a class="panel-toggle"><i class="fa fa-chevron-up" [ngStyle]="{ transform: 'rotate(' + settingsRotate.value + 'deg)' }"></i></a>
+            </div>
+            Settings
+          </div>
+          <div class="panel-body" style="text-align: center;" id="settingsContent" [ngStyle]="{ display: displayOpened }">
+
+            <a class="btn btn-w-md btn-info" style="width: 60%;">Update Informations</a> <br><br>
+            <a class="btn btn-w-md btn-danger" style="width: 60%;" (click)="removeAccount(user.id)">Remove Account</a>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</section>

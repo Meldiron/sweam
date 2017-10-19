@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+*:hover {
+  transition: ease .4s;
+}
+
+.btn {
+  transition: ease .4s;
+}
+
+#createAccBtn:hover {
+  color: #fff !important;
+  background-color: rgba(27, 191, 137, 0.2) !important;
+}
+
+.swal2-modal {
+  background-color: #484b55 !important;
+}
+
+
+.swal2-styled {
+  background-color: #f6a821 !important;
+  border: none !important;
+}
+
+.swal2-styled:active {
+  border: none !important;
+}
+
+.swal2-title {
+  color: #FFFFFF !important;
+}
+
+.swal2-content {
+  color: #FFFFFF !important;
+}
+
+.swal2-success-circular-line-left {
+  background-color: #484b55 !important;
+}
+
+.swal2-success-circular-line-right {
+  background-color: #484b55 !important;
+}
+
+.swal2-success-fix {
+  background-color: #484b55 !important;
+}
+
+.swal2-success-ring {
+  border: 4px solid rgba(246, 168, 33, .4) !important;
+}
+
+.swal2-success-line-tip {
+  background-color: #f6a821 !important;
+}
+
+.swal2-success-line-long {
+  background-color: #f6a821 !important;
+}
+
+
+.swal2-warning {
+  color: #db524b !important;
+  border-color: #db524b !important;
+}
+
+.swal2-cancel {
+  background-color: #db524b !important;
+}
+
+.swal2-modal .swal2-styled:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 2px #484b55, 0 0 0 4px #484b55 !important;
+  box-shadow: 0 0 0 2px #484b55, 0 0 0 4px #484b55 !important;
+}
+
+
+.btn-mel:active {
+  background-color: #c37e08 !important;
+  border-color: #c37e08 !important;
+}
+
+.swal2-progresscircle {
+  background-color: #b0833c !important;
+}
+
+.swal2-progressline {
+  background-color: #b0833c !important;
+}
+
+.swal2-activeprogressstep {
+  background-color: #f6a821 !important;
+}
+
+.swal2-input {
+  color: #f6a821 !important;
+  background-color: #2d2e34 !important;
+  border: 1px solid #f6a821 !important;
+  box-shadow: none !important;
+}

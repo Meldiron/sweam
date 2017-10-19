@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div id="mobile-menu" (click)="toggleMenu()">
+        <div class="left-nav-toggle">
+          <a>
+            <i class="stroke-hamburgermenu"></i>
+          </a>
+        </div>
+      </div>
+      <a class="navbar-brand" href="index.html">
+        SWEAM
+        <span>v 2.0</span>
+      </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <div class="left-nav-toggle" (click)="toggleMenu()">
+        <a>
+          <i class="stroke-hamburgermenu"></i>
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class=" profil-link">
+          <a (click)="showAlert()">
+            <span class="profile-address">Switch Steam</span>
+            <img src="assets/images/steam.svg" class="img-circle" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

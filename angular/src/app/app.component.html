@@ -1,0 +1,26 @@
+
+
+<div *ngIf="isLoaded">
+
+  <app-git></app-git>
+
+  <div class="wrapper">
+
+    <app-header
+      (onmenuClick)="toggleMenu()"
+    ></app-header>
+
+    <app-menu
+      (setActiveUser)="setActiveUser($event)"
+      [users]="users"
+      [activeUser]="activeUser"
+    ></app-menu>
+
+    <app-body *ngIf="users.length !== 0" [user]="getActiveUser(activeUser)"></app-body>
+
+  </div>
+
+</div>
+
+<div *ngIf="!isLoaded"> Loading... </div>
+

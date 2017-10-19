@@ -1,8 +1,38 @@
 {
  "path": "C:/Program Files (x86)/Steam",
- "imgPath": [],
- "usrName": [],
- "name": [],
- "pass": [],
- "date": []
+ "imgPath": [
+  "images/default.jpg",
+  "images/default.jpg",
+  "images/default.jpg",
+  "images/default.jpg",
+  "images/default.jpg"
+ ],
+ "usrName": [
+  "a",
+  "b",
+  "c",
+  "c",
+  "c"
+ ],
+ "name": [
+  "a",
+  "b",
+  "c",
+  "c",
+  "c"
+ ],
+ "pass": [
+  "a",
+  "b",
+  "c",
+  "c",
+  "c"
+ ],
+ "date": [
+  "18/10/2017",
+  "18/10/2017",
+  "18/10/2017",
+  "18/10/2017",
+  "18/10/2017"
+ ]
 }

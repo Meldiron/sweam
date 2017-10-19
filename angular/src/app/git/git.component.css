@@ -1,0 +1,7 @@
+a {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 100px;
+  z-index: 1000;
+}

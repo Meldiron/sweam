@@ -1,0 +1,36 @@
+<aside class="navigation" style="position: fixed; z-index: 1;transform: translateX(0px);" id="leftMenu">
+  <nav>
+    <ul class="nav luna-nav">
+
+      <li class="active">
+        <a (click)="closeUsers()">
+          Accounts
+          <span class="sub-nav-icon" id="usersArrow" [ngStyle]="{ transform: 'rotate(' + arrowRotate.value + 'deg)' }"> <i class="stroke-arrow"></i> </span>
+        </a>
+
+
+        <ul id="usersContent" class="nav nav-second" [ngStyle]="{ display: displayOpened }">
+
+          <li *ngFor="let user of users; let id = index" [ngClass]="{ active: isActive(id) }">
+            <a (click)="switchToUser(id)"> {{ user.displayName }} </a>
+          </li>
+        </ul>
+      </li>
+
+      <li style="margin-top: 20px;">
+        <a (click)="createAcc()" id="createAccBtn" style="width: 80%; left: 10%; text-align: center;" class="btn btn-w-md btn-success btn-rounded">Create Account</a>
+      </li>
+
+
+
+      <li class="nav-info">
+        <div class="m-t-xs">
+          Made with <span class="c-white">love</span> by<br>
+          <span class="c-white">Meldiron</span> & <span class="c-white">saintusmarcus</span>.
+          <br/>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+</aside>
