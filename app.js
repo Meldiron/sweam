@@ -18,12 +18,21 @@ const request = require('request');
 const fs_extra = require('fs-extra');
 const uuid = require('uuid/v1');
 
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+db.defaults(
+  { users: [] }
+).write();
+
+users = db.get('users').value();
+
 io.on("connection", function(socket) {
-  console.log("Connected");
   socket.emit('newData', users);
 
   socket.on('openUrl', (data) => {
-    console.log("New data, " + data);
     electron.shell.openExternal(data);
   });
 
@@ -41,9 +50,8 @@ io.on("connection", function(socket) {
     }
 
     if(index != -1) {
-      console.log(data.val);
-      users[index].showPass = data.val;
-      console.log(users[index].displayName);
+      db.get('users').find({ id: data.id }).assign({ showPass: data.val }).write();
+
       socket.emit('newData', users);
       callback({ status: 'success' });
     } else {
@@ -66,16 +74,19 @@ io.on("connection", function(socket) {
           if(err) {
             callback({ status: 'error', msg: 'Can\t remove photo.' });
           } else {
+            
             users.splice(index, 1);
-            console.log("spliced");
-            console.log(users);
+
+            db.get('users').remove({ id: data }).write();
+
             socket.emit('newData', users);
             callback({ status: 'success' });
           }
         });
 
       } else {
-        users.splice(index, 1);
+        db.get('users').remove({ id: data }).write();
+
         socket.emit('newData', users);
         callback({ status: 'success' });
       }
@@ -111,7 +122,9 @@ io.on("connection", function(socket) {
 
     if(data.img == '') {
       data.img = "http://localhost:" + appPort + "/assets/images/steam.svg";
-      users.push(data);
+
+      db.get('users').push(data).write();
+
       socket.emit('newData', users);
       socket.emit('setActive', users.length - 1);
       return callback({ status: 'success' });
@@ -122,10 +135,10 @@ io.on("connection", function(socket) {
           return callback({ status: 'error', msg: 'Unexpected error whiel saving image.' });
         }
 
-
         data.img = "http://localhost:" + appPort + "/photos/" + newid;
 
-        users.push(data);
+        db.get('users').push(data).write();
+
         socket.emit('newData', users);
         socket.emit('setActive', users.length - 1);
         return callback({ status: 'success' });
