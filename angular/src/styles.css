@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+span, p, small, h1, h2, h3, h4, h5, h6, table, tr, td, ul, li, .swal2-content {
+  cursor: default;
+}
+
+
+
+a,input[type='checkbox'] {
+  cursor: pointer;
+}
+
 *:hover {
   transition: ease .4s;
 }

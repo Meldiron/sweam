@@ -45,4 +45,8 @@ export class ApiService {
     });
   }
 
+  sendOpenUrl(url) {
+    this.socket.emit('openUrl', url);
+  }
+
 }

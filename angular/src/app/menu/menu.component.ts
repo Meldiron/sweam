@@ -172,7 +172,7 @@ export class MenuComponent implements OnInit {
         html: 'Select photo you want ti see in app<br><br>' +
               '<label class="btn btn-accent" for="file-selector2">' +
               '<input id="file-selector2" type="file" style="display: none;">' +
-              '<span id="upload-file-info2"> ' + this.fileSelectText + ' </span>' +
+              '<span id="upload-file-info2" style="cursor: pointer;"> ' + this.fileSelectText + ' </span>' +
               '</label> <small id="upload-file-info3"> Click to choose file </small>' +
               '<br><br> <img src="" alt="" style="display: none;  margin-left: calc(50% - 50px); width: 120px; height: 120px; border-radius: 50%;" id="upload-file-img" /> ',
         showCancelButton: true,

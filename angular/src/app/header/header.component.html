@@ -3,26 +3,26 @@
     <div class="navbar-header">
       <div id="mobile-menu" (click)="toggleMenu()">
         <div class="left-nav-toggle">
-          <a>
+          <a style="cursor: pointer;">
             <i class="stroke-hamburgermenu"></i>
           </a>
         </div>
       </div>
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" style="cursor: default;">
         SWEAM
         <span>v 2.0</span>
       </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <div class="left-nav-toggle" (click)="toggleMenu()">
-        <a>
+        <a style="cursor: pointer;">
           <i class="stroke-hamburgermenu"></i>
         </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li class=" profil-link">
           <a (click)="showAlert()">
-            <span class="profile-address">Switch Steam</span>
+            <span class="profile-address" style="cursor: pointer;">Switch Steam</span>
             <img src="assets/images/steam.svg" class="img-circle" alt="">
           </a>
         </li>

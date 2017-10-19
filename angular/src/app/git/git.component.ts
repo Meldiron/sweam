@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-git',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GitComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
+  }
+
+  openUrl() {
+    this.api.sendOpenUrl('https://github.com/saintusmarcus/sweam');
   }
 
 }

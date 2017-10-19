@@ -1,11 +1,11 @@
 webpackJsonp([1,4],{
 
-/***/ 103:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_service__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -63,8 +63,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(190),
-        styles: [__webpack_require__(178)]
+        template: __webpack_require__(192),
+        styles: [__webpack_require__(181)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__api_service__["a" /* ApiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__api_service__["a" /* ApiService */]) === "function" && _a || Object])
 ], AppComponent);
@@ -74,22 +74,22 @@ var _a;
 
 /***/ }),
 
-/***/ 104:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__git_git_component__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__body_body_component__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menu_menu_component__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__header_header_component__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__api_service__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__alert_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng2_sweetalert2__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__git_git_component__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__body_body_component__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menu_menu_component__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__header_header_component__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__api_service__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__alert_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng2_sweetalert2__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng2_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_ng2_sweetalert2__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -142,15 +142,15 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 105:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_animejs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alert_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alert_service__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BodyComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -326,8 +326,8 @@ __decorate([
 BodyComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'app-body',
-        template: __webpack_require__(191),
-        styles: [__webpack_require__(179)]
+        template: __webpack_require__(193),
+        styles: [__webpack_require__(182)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__api_service__["a" /* ApiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__api_service__["a" /* ApiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__alert_service__["a" /* AlertService */]) === "function" && _b || Object])
 ], BodyComponent);
@@ -337,11 +337,12 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 106:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_service__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GitComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -353,34 +354,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var GitComponent = (function () {
-    function GitComponent() {
+    function GitComponent(api) {
+        this.api = api;
     }
     GitComponent.prototype.ngOnInit = function () {
+    };
+    GitComponent.prototype.openUrl = function () {
+        this.api.sendOpenUrl('https://github.com/saintusmarcus/sweam');
     };
     return GitComponent;
 }());
 GitComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'app-git',
-        template: __webpack_require__(192),
-        styles: [__webpack_require__(180)]
+        template: __webpack_require__(194),
+        styles: [__webpack_require__(183)]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__api_service__["a" /* ApiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__api_service__["a" /* ApiService */]) === "function" && _a || Object])
 ], GitComponent);
 
+var _a;
 //# sourceMappingURL=git.component.js.map
 
 /***/ }),
 
-/***/ 107:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_animejs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alert_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alert_service__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -461,8 +468,8 @@ __decorate([
 HeaderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'app-header',
-        template: __webpack_require__(193),
-        styles: [__webpack_require__(181)]
+        template: __webpack_require__(195),
+        styles: [__webpack_require__(184)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__alert_service__["a" /* AlertService */]) === "function" && _a || Object])
 ], HeaderComponent);
@@ -472,15 +479,15 @@ var _a;
 
 /***/ }),
 
-/***/ 108:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_animejs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alert_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alert_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_service__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -642,7 +649,7 @@ var MenuComponent = (function () {
                 html: 'Select photo you want ti see in app<br><br>' +
                     '<label class="btn btn-accent" for="file-selector2">' +
                     '<input id="file-selector2" type="file" style="display: none;">' +
-                    '<span id="upload-file-info2"> ' + this.fileSelectText + ' </span>' +
+                    '<span id="upload-file-info2" style="cursor: pointer;"> ' + this.fileSelectText + ' </span>' +
                     '</label> <small id="upload-file-info3"> Click to choose file </small>' +
                     '<br><br> <img src="" alt="" style="display: none;  margin-left: calc(50% - 50px); width: 120px; height: 120px; border-radius: 50%;" id="upload-file-img" /> ',
                 showCancelButton: true,
@@ -717,8 +724,8 @@ __decorate([
 MenuComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'app-menu',
-        template: __webpack_require__(194),
-        styles: [__webpack_require__(182)]
+        template: __webpack_require__(196),
+        styles: [__webpack_require__(185)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__alert_service__["a" /* AlertService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__api_service__["a" /* ApiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__api_service__["a" /* ApiService */]) === "function" && _b || Object])
 ], MenuComponent);
@@ -728,7 +735,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 109:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -742,60 +749,6 @@ var environment = {
     production: false
 };
 //# sourceMappingURL=environment.js.map
-
-/***/ }),
-
-/***/ 178:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(11)(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 179:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(11)(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 180:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(11)(false);
-// imports
-
-
-// module
-exports.push([module.i, "a {\n  position: fixed;\n  top: 60px;\n  right: 0;\n  width: 100px;\n  z-index: 1000;\n}\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
 
 /***/ }),
 
@@ -835,104 +788,101 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 190:
-/***/ (function(module, exports) {
+/***/ 183:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "\n\n<div *ngIf=\"isLoaded\">\n\n  <app-git></app-git>\n\n  <div class=\"wrapper\">\n\n    <app-header\n      (onmenuClick)=\"toggleMenu()\"\n    ></app-header>\n\n    <app-menu\n      (setActiveUser)=\"setActiveUser($event)\"\n      [users]=\"users\"\n      [activeUser]=\"activeUser\"\n    ></app-menu>\n\n    <app-body *ngIf=\"users.length !== 0\" [user]=\"getActiveUser(activeUser)\"></app-body>\n\n  </div>\n\n</div>\n\n<div *ngIf=\"!isLoaded\"> Loading... </div>\n\n"
+exports = module.exports = __webpack_require__(11)(false);
+// imports
+
+
+// module
+exports.push([module.i, "a {\r\n  position: fixed;\r\n  top: 60px;\r\n  right: 0;\r\n  width: 100px;\r\n  z-index: 1000;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 191:
-/***/ (function(module, exports) {
+/***/ 184:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<section class=\"content\" id=\"mainContent\">\n  <div class=\"container-fluid\">\n\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <div class=\"view-header\">\n          <div class=\"pull-right text-right\" style=\"line-height: 18px; padding-top: 5px;\">\n            <small>\n              {{ timeNow | date:'dd.MM.yyyy' }}<br>\n              <span class=\"c-white\">{{ timeNow | date:'hh : mm : ss' }}</span>\n            </small>\n          </div>\n          <div class=\"header-icon\">\n            <i class=\"pe page-header-icon pe-7s-user\"></i>\n          </div>\n          <div class=\"header-title\">\n            <h3>{{ user.displayName }}</h3>\n            <small>\n              {{ user.description }}\n            </small>\n          </div>\n        </div>\n        <hr>\n      </div>\n    </div>\n\n    <div class=\"row\">\n\n      <div class=\"col-md-7\">\n\n\n        <div class=\"panel panel-filled\" style=\"margin-top: 60px;\">\n          <div class=\"panel-heading\">\n            <div class=\"panel-tools\" (click)=\"openSettingsPopup(user)\">\n              <a class=\"panel-close\" style=\"font-size:25px;\"><i style=\"color: #fff;\" class=\"fa fa-cog\"></i></a>\n            </div>\n          </div>\n\n          <div style=\"width: 100%;\">\n\n            <img style=\"width: 120px; height: 120px; margin-left: calc(50% - 60px); margin-top: -80px; border-radius: 50%;\" [src]=\"user.img\" alt=\"User\">\n          </div>\n\n          <div class=\"panel-body\" style=\"margin-top: 20px; margin-bottom: 30px;\">\n            <h1 style=\"text-align: center; color: #ffffff;\"> {{ user.displayName }} </h1>\n            <h3 style=\"text-align: center; margin-top: -10px;\"> <small>Steam Account</small> </h3>\n\n\n            <div class=\"table-responsive\" style=\"margin-top:30px;\">\n              <table class=\"table table-hover table-striped\">\n                <tbody>\n                <tr>\n                  <td>Description: </td>\n                  <td> {{ user.description }} </td>\n                </tr>\n                <tr>\n                  <td>Username: </td>\n                  <td> {{ user.name }} </td>\n                </tr>\n                <tr>\n                  <td>Password: </td>\n                  <td> {{ pass(user.password) }} </td>\n                </tr>\n\n                <tr>\n                  <td>Last Login: </td>\n                  <td>\n                    <table>\n                      <tr>\n                        <td style=\"width: 70px;\"> {{ user.lastLogin | date:'dd.MM.yyyy' }} </td>\n                        <td style=\"padding-left:10px;\"> | </td>\n                        <td style=\"padding-left:10px\">  {{ user.lastLogin | date:'hh:mm:ss' }} </td>\n                      </tr>\n                    </table>\n                  </td>\n                </tr>\n\n                <tr>\n                  <td>Create date: </td>\n                  <td>\n                    <table>\n                      <tr>\n                        <td style=\"width: 70px;\"> {{ user.createDate | date:'dd.MM.yyyy' }} </td>\n                        <td style=\"padding-left:10px;\"> | </td>\n                        <td style=\"padding-left:10px\"> {{ user.createDate | date:'hh:mm:ss' }} </td>\n                      </tr>\n                    </table>\n                  </td>\n                </tr>\n\n                </tbody>\n              </table>\n            </div>\n\n          </div>\n\n\n        </div>\n\n        <a class=\"btn btn-w-md btn-accent btn-rounded\"\n           style=\"width: 200px; margin-left: calc(50% - 100px); margin-top: -60px; font-size:25px; background: #f6a821; color: #fff;\">LOGIN</a>\n\n      </div>\n\n      <div class=\"col-md-5\">\n\n        <div class=\"panel panel-filled panel-c-accent\" style=\"margin-top: 60px;\">\n          <div class=\"panel-heading\" (click)=\"toggleSettings()\" style=\"cursor: pointer;\">\n            <div class=\"panel-tools\">\n              <a class=\"panel-toggle\"><i class=\"fa fa-chevron-up\" [ngStyle]=\"{ transform: 'rotate(' + settingsRotate.value + 'deg)' }\"></i></a>\n            </div>\n            Settings\n          </div>\n          <div class=\"panel-body\" style=\"text-align: center;\" id=\"settingsContent\" [ngStyle]=\"{ display: displayOpened }\">\n\n            <a class=\"btn btn-w-md btn-info\" style=\"width: 60%;\">Update Informations</a> <br><br>\n            <a class=\"btn btn-w-md btn-danger\" style=\"width: 60%;\" (click)=\"removeAccount(user.id)\">Remove Account</a>\n\n          </div>\n        </div>\n\n      </div>\n\n    </div>\n\n\n  </div>\n</section>\n"
+exports = module.exports = __webpack_require__(11)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 185:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(11)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
 /***/ 192:
 /***/ (function(module, exports) {
 
-module.exports = "<a href=\"https://github.com/saintusmarcus/sweam\" target=\"_blank\">\n  <img src=\"assets/images/git.svg\" alt=\"Git\">\n</a>\n"
+module.exports = "\r\n\r\n<div *ngIf=\"isLoaded\">\r\n\r\n  <app-git></app-git>\r\n\r\n  <div class=\"wrapper\">\r\n\r\n    <app-header\r\n      (onmenuClick)=\"toggleMenu()\"\r\n    ></app-header>\r\n\r\n    <app-menu\r\n      (setActiveUser)=\"setActiveUser($event)\"\r\n      [users]=\"users\"\r\n      [activeUser]=\"activeUser\"\r\n    ></app-menu>\r\n\r\n    <app-body *ngIf=\"users.length !== 0\" [user]=\"getActiveUser(activeUser)\"></app-body>\r\n\r\n  </div>\r\n\r\n</div>\r\n\r\n<div *ngIf=\"!isLoaded\"> Loading... </div>\r\n\r\n"
 
 /***/ }),
 
 /***/ 193:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <div id=\"mobile-menu\" (click)=\"toggleMenu()\">\n        <div class=\"left-nav-toggle\">\n          <a>\n            <i class=\"stroke-hamburgermenu\"></i>\n          </a>\n        </div>\n      </div>\n      <a class=\"navbar-brand\" href=\"index.html\">\n        SWEAM\n        <span>v 2.0</span>\n      </a>\n    </div>\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\n      <div class=\"left-nav-toggle\" (click)=\"toggleMenu()\">\n        <a>\n          <i class=\"stroke-hamburgermenu\"></i>\n        </a>\n      </div>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\" profil-link\">\n          <a (click)=\"showAlert()\">\n            <span class=\"profile-address\">Switch Steam</span>\n            <img src=\"assets/images/steam.svg\" class=\"img-circle\" alt=\"\">\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "<section class=\"content\" id=\"mainContent\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-lg-12\">\r\n        <div class=\"view-header\">\r\n          <div class=\"pull-right text-right\" style=\"line-height: 18px; padding-top: 5px;\">\r\n            <small>\r\n              {{ timeNow | date:'dd.MM.yyyy' }}<br>\r\n              <span class=\"c-white\">{{ timeNow | date:'hh : mm : ss' }}</span>\r\n            </small>\r\n          </div>\r\n          <div class=\"header-icon\">\r\n            <i class=\"pe page-header-icon pe-7s-user\"></i>\r\n          </div>\r\n          <div class=\"header-title\">\r\n            <h3>{{ user.displayName }}</h3>\r\n            <small>\r\n              {{ user.description }}\r\n            </small>\r\n          </div>\r\n        </div>\r\n        <hr>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-md-7\">\r\n\r\n\r\n        <div class=\"panel panel-filled\" style=\"margin-top: 60px;\">\r\n          <div class=\"panel-heading\">\r\n            <div class=\"panel-tools\" (click)=\"openSettingsPopup(user)\">\r\n              <a class=\"panel-close\" style=\"font-size:25px;\"><i style=\"color: #fff;\" class=\"fa fa-cog\"></i></a>\r\n            </div>\r\n          </div>\r\n\r\n          <div style=\"width: 100%;\">\r\n\r\n            <img style=\"width: 120px; height: 120px; margin-left: calc(50% - 60px); margin-top: -80px; border-radius: 50%;\" [src]=\"user.img\" alt=\"User\">\r\n          </div>\r\n\r\n          <div class=\"panel-body\" style=\"margin-top: 20px; margin-bottom: 30px;\">\r\n            <h1 style=\"text-align: center; color: #ffffff;\"> {{ user.displayName }} </h1>\r\n            <h3 style=\"text-align: center; margin-top: -10px;\"> <small>Steam Account</small> </h3>\r\n\r\n\r\n            <div class=\"table-responsive\" style=\"margin-top:30px;\">\r\n              <table class=\"table table-hover table-striped\">\r\n                <tbody>\r\n                <tr>\r\n                  <td>Description: </td>\r\n                  <td> {{ user.description }} </td>\r\n                </tr>\r\n                <tr>\r\n                  <td>Username: </td>\r\n                  <td> {{ user.name }} </td>\r\n                </tr>\r\n                <tr>\r\n                  <td>Password: </td>\r\n                  <td> {{ pass(user.password) }} </td>\r\n                </tr>\r\n\r\n                <tr>\r\n                  <td>Last Login: </td>\r\n                  <td>\r\n                    <table>\r\n                      <tr>\r\n                        <td style=\"width: 70px;\"> {{ user.lastLogin | date:'dd.MM.yyyy' }} </td>\r\n                        <td style=\"padding-left:10px;\"> | </td>\r\n                        <td style=\"padding-left:10px\">  {{ user.lastLogin | date:'hh:mm:ss' }} </td>\r\n                      </tr>\r\n                    </table>\r\n                  </td>\r\n                </tr>\r\n\r\n                <tr>\r\n                  <td>Create date: </td>\r\n                  <td>\r\n                    <table>\r\n                      <tr>\r\n                        <td style=\"width: 70px;\"> {{ user.createDate | date:'dd.MM.yyyy' }} </td>\r\n                        <td style=\"padding-left:10px;\"> | </td>\r\n                        <td style=\"padding-left:10px\"> {{ user.createDate | date:'hh:mm:ss' }} </td>\r\n                      </tr>\r\n                    </table>\r\n                  </td>\r\n                </tr>\r\n\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <a class=\"btn btn-w-md btn-accent btn-rounded\"\r\n           style=\"width: 200px; margin-left: calc(50% - 100px); margin-top: -60px; font-size:25px; background: #f6a821; color: #fff;\">LOGIN</a>\r\n\r\n      </div>\r\n\r\n      <div class=\"col-md-5\">\r\n\r\n        <div class=\"panel panel-filled panel-c-accent\" style=\"margin-top: 60px;\">\r\n          <div class=\"panel-heading\" (click)=\"toggleSettings()\" style=\"cursor: pointer;\">\r\n            <div class=\"panel-tools\">\r\n              <a class=\"panel-toggle\"><i class=\"fa fa-chevron-up\" [ngStyle]=\"{ transform: 'rotate(' + settingsRotate.value + 'deg)' }\"></i></a>\r\n            </div>\r\n            Settings\r\n          </div>\r\n          <div class=\"panel-body\" style=\"text-align: center;\" id=\"settingsContent\" [ngStyle]=\"{ display: displayOpened }\">\r\n\r\n            <a class=\"btn btn-w-md btn-info\" style=\"width: 60%;\">Update Informations</a> <br><br>\r\n            <a class=\"btn btn-w-md btn-danger\" style=\"width: 60%;\" (click)=\"removeAccount(user.id)\">Remove Account</a>\r\n\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n\r\n  </div>\r\n</section>\r\n"
 
 /***/ }),
 
 /***/ 194:
 /***/ (function(module, exports) {
 
-module.exports = "<aside class=\"navigation\" style=\"position: fixed; z-index: 1;transform: translateX(0px);\" id=\"leftMenu\">\n  <nav>\n    <ul class=\"nav luna-nav\">\n\n      <li class=\"active\">\n        <a (click)=\"closeUsers()\">\n          Accounts\n          <span class=\"sub-nav-icon\" id=\"usersArrow\" [ngStyle]=\"{ transform: 'rotate(' + arrowRotate.value + 'deg)' }\"> <i class=\"stroke-arrow\"></i> </span>\n        </a>\n\n\n        <ul id=\"usersContent\" class=\"nav nav-second\" [ngStyle]=\"{ display: displayOpened }\">\n\n          <li *ngFor=\"let user of users; let id = index\" [ngClass]=\"{ active: isActive(id) }\">\n            <a (click)=\"switchToUser(id)\"> {{ user.displayName }} </a>\n          </li>\n        </ul>\n      </li>\n\n      <li style=\"margin-top: 20px;\">\n        <a (click)=\"createAcc()\" id=\"createAccBtn\" style=\"width: 80%; left: 10%; text-align: center;\" class=\"btn btn-w-md btn-success btn-rounded\">Create Account</a>\n      </li>\n\n\n\n      <li class=\"nav-info\">\n        <div class=\"m-t-xs\">\n          Made with <span class=\"c-white\">love</span> by<br>\n          <span class=\"c-white\">Meldiron</span> & <span class=\"c-white\">saintusmarcus</span>.\n          <br/>\n        </div>\n      </li>\n\n    </ul>\n  </nav>\n</aside>\n"
+module.exports = "<a (click)=\"openUrl()\">\r\n  <img src=\"assets/images/git.svg\" alt=\"Git\">\r\n</a>\r\n"
 
 /***/ }),
 
-/***/ 225:
+/***/ 195:
 /***/ (function(module, exports) {
 
-/* (ignored) */
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <div id=\"mobile-menu\" (click)=\"toggleMenu()\">\r\n        <div class=\"left-nav-toggle\">\r\n          <a style=\"cursor: pointer;\">\r\n            <i class=\"stroke-hamburgermenu\"></i>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <a class=\"navbar-brand\" style=\"cursor: default;\">\r\n        SWEAM\r\n        <span>v 2.0</span>\r\n      </a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n      <div class=\"left-nav-toggle\" (click)=\"toggleMenu()\">\r\n        <a style=\"cursor: pointer;\">\r\n          <i class=\"stroke-hamburgermenu\"></i>\r\n        </a>\r\n      </div>\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li class=\" profil-link\">\r\n          <a (click)=\"showAlert()\">\r\n            <span class=\"profile-address\" style=\"cursor: pointer;\">Switch Steam</span>\r\n            <img src=\"assets/images/steam.svg\" class=\"img-circle\" alt=\"\">\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
-/***/ 226:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 196:
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(95);
-
+module.exports = "<aside class=\"navigation\" style=\"position: fixed; z-index: 1;transform: translateX(0px);\" id=\"leftMenu\">\r\n  <nav>\r\n    <ul class=\"nav luna-nav\">\r\n\r\n      <li class=\"active\">\r\n        <a (click)=\"closeUsers()\">\r\n          Accounts\r\n          <span class=\"sub-nav-icon\" id=\"usersArrow\" [ngStyle]=\"{ transform: 'rotate(' + arrowRotate.value + 'deg)' }\"> <i class=\"stroke-arrow\"></i> </span>\r\n        </a>\r\n\r\n\r\n        <ul id=\"usersContent\" class=\"nav nav-second\" [ngStyle]=\"{ display: displayOpened }\">\r\n\r\n          <li *ngFor=\"let user of users; let id = index\" [ngClass]=\"{ active: isActive(id) }\">\r\n            <a (click)=\"switchToUser(id)\"> {{ user.displayName }} </a>\r\n          </li>\r\n        </ul>\r\n      </li>\r\n\r\n      <li style=\"margin-top: 20px;\">\r\n        <a (click)=\"createAcc()\" id=\"createAccBtn\" style=\"width: 80%; left: 10%; text-align: center;\" class=\"btn btn-w-md btn-success btn-rounded\">Create Account</a>\r\n      </li>\r\n\r\n\r\n\r\n      <li class=\"nav-info\">\r\n        <div class=\"m-t-xs\">\r\n          Made with <span class=\"c-white\">love</span> by<br>\r\n          <span class=\"c-white\">Meldiron</span> & <span class=\"c-white\">saintusmarcus</span>.\r\n          <br/>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n  </nav>\r\n</aside>\r\n"
 
 /***/ }),
 
-/***/ 28:
+/***/ 21:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var AlertService = (function () {
-    function AlertService() {
-        this.swal = __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a;
-    }
-    AlertService.prototype.alert = function (obj) {
-        __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()(obj);
-    };
-    AlertService.prototype.alertWithQuestion = function (obj, obj2) {
-        __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()(obj).then(function () {
-            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()(obj2);
-        });
-    };
-    return AlertService;
-}());
-AlertService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
-], AlertService);
-
-//# sourceMappingURL=alert.service.js.map
-
-/***/ }),
-
-/***/ 29:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_socket_io_client__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApiService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -980,6 +930,9 @@ var ApiService = (function () {
             _this.events.emit({ status: 'disconnected' });
         });
     }
+    ApiService.prototype.sendOpenUrl = function (url) {
+        this.socket.emit('openUrl', url);
+    };
     return ApiService;
 }());
 ApiService = __decorate([
@@ -991,7 +944,64 @@ ApiService = __decorate([
 
 /***/ }),
 
-/***/ 94:
+/***/ 232:
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 233:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(98);
+
+
+/***/ }),
+
+/***/ 29:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AlertService = (function () {
+    function AlertService() {
+        this.swal = __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default.a;
+    }
+    AlertService.prototype.alert = function (obj) {
+        __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()(obj);
+    };
+    AlertService.prototype.alertWithQuestion = function (obj, obj2) {
+        __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()(obj).then(function () {
+            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()(obj2);
+        });
+    };
+    return AlertService;
+}());
+AlertService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], AlertService);
+
+//# sourceMappingURL=alert.service.js.map
+
+/***/ }),
+
+/***/ 97:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -1000,20 +1010,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 94;
+webpackEmptyContext.id = 97;
 
 
 /***/ }),
 
-/***/ 95:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(112);
 
 
 
@@ -1026,5 +1036,5 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ })
 
-},[226]);
+},[233]);
 //# sourceMappingURL=main.bundle.js.map
